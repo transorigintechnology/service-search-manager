@@ -1,0 +1,71 @@
+spring:
+  application:
+    name: service-search-manager
+---
+#CORS configuration
+cors:
+  allowed-origins:
+    - "https://localhost:44317"
+  allowed-methods:
+    - "GET"
+    - "POST"
+    - "PUT"
+    - "DELETE"
+    - "OPTIONS"
+  allowed-headers:
+    - "Authorization"
+    - "Content-Type"
+---
+#Swagger Configuration
+springfox:
+  documentation:
+    swagger-ui:
+      enabled: true
+    open-api:
+      enabled: true
+---
+#PostgreSQL Configuration
+spring:
+  datasource:
+    url: jdbc:postgresql://10.0.0.102:5432/mydatabase
+    username: myuser
+    password: mypassword
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+---
+#Logging Configuration
+#logging:
+#  level:
+#    root: INFO
+#    org.springframework.web: DEBUG
+#    com.example.relocation: DEBUG
+---
+#Server Configuration
+server:
+  port: 8081
+  servlet:
+    context-path: /service-search-manager
+---
+#Kafka Configuration
+spring:
+  kafka:
+    bootstrap-servers: 10.0.0.102:9092
+    consumer:
+      group-id: service-search-manager-group
+      auto-offset-reset: latest
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+---
+google:
+  api:
+    key: AIzaSyBlVn7X4C1zKjF90DXrppH8GoS7aa00s14
+
+
+
